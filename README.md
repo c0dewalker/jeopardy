@@ -4,14 +4,14 @@
 
 ##Tech Stack: 
 
-React
-Redux
-React Router
-Node.js
-Express
-MongoDB
-Mongoose
-Passport.js
-HTML
-CSS3
-Ant Design
+- React
+- Redux
+- React Router
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- Passport.js
+- HTML
+- CSS
+- Ant Design
