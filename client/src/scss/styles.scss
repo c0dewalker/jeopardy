@@ -1,3 +1,9 @@
+$yellow: #ffcc13;
+
+@import "header";
+@import "score";
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,11 +13,24 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body,
-html {
+html, body {
   height: 100%;
 }
-body {
+
+.wrapper {
+  height: 100vh;
+}
+
+.login {
+  position: relative;
+  height: 100%;
+  background-color: white;
+  border: 1px solid black;
+  padding: 30px 20px 20px 20px;
+  margin: 70px;
+  z-index: 1;
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+  background: url("https://dfw.cbslocal.com/wp-content/uploads/sites/15909545/2014/03/jeopardy_98521822.jpg") center center / contain no-repeat;
 }
 
 .bg {
@@ -23,7 +42,7 @@ body {
   background-position: center 85px;
 }
 
-code {
+.code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
@@ -101,11 +120,6 @@ code {
   margin: 5px 10px;
 }
 
-.score {
-  color: aliceblue;
-  text-align: center;
-}
-
 .timer {
   position: absolute;
   left: 20px;
@@ -115,42 +129,6 @@ code {
 
 .timer-heading {
   display: inline-block;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 80px;
-  background-color: blue;
-}
-
-nav div {
-  margin: 25px;
-}
-
-.nav-item {
-  margin: 25px;
-  font-size: 1.2rem;
-  font-weight: 900;
-  color: white;
-}
-
-.score-text {
-  font-size: 1.5rem;
-  color: #ffcc13;
-}
-
-.score-number {
-  font-size: 2.5rem;
-  color: #ffcc13;
-}
-
-.score-block {
-  width: 500px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .item,

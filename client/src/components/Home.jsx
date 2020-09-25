@@ -7,7 +7,9 @@ import { useSelector, useDispatch } from 'react-redux'
 const Home = () => {
   const dispatch = useDispatch()
 
-  useEffect(() => dispatch(setIsPlayingTrueAC()), [])
+  useEffect(() => {
+    dispatch(setIsPlayingTrueAC())
+  }, [])
 
   const { isAuth, initialized } = useSelector(state => state)
 

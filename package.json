@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "client": "cd ./client && npm start",
+    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon ./bin/www\" \"npm run client\""
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -23,6 +25,7 @@
     "sha256": "^0.2.0"
   },
   "devDependencies": {
+    "eslint": "^7.9.0",
     "nodemon": "^2.0.4"
   }
 }
