@@ -1,0 +1,41 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  width: 60%;
+  transform: translateY(13vh);
+  margin: 0 auto;
+  background-color: #108ff7;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: center;
+}
+
+.category {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.category-name {
+  flex-grow: 3;
+}
+
+.item {
+  height: 100%;
+  flex-grow: 1;
+  border-left: 1px solid white;
+}
+
+.question {
+  height: 100%;
+  border: solid 1px black;
+}
+
+.question:hover {
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+}

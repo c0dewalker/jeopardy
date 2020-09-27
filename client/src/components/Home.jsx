@@ -1,6 +1,6 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react'
 import { setIsPlayingTrueAC } from '../store/actions'
-import Game from './Game'
+import Game from './Game/Game'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -11,12 +11,12 @@ const Home = () => {
     dispatch(setIsPlayingTrueAC())
   }, [])
 
-  const { isAuth, initialized } = useSelector(state => state)
+  const { isAuth, initialized } = useSelector((state) => state)
 
   return (
     <>
-      {(initialized && isAuth) && <Game />}
-      {(!initialized && isAuth) && <h1>Loading</h1>}
+      {initialized && isAuth && <Game />}
+      {!initialized && isAuth && <h1>Loading</h1>}
     </>
   )
 }

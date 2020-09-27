@@ -1,12 +1,12 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { userLoginAC } from '../store/actions'
-import { Row, Col, Form, Input, Button } from 'antd'
+import { userLoginAC } from '../../store/actions'
+import { Form, Input, Button } from 'antd'
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons'
 import axios from 'axios'
 
-const axiosQ = axios.create({ withCredentials: true })
+const axiosCors = axios.create({ withCredentials: true })
 
 export default function LoginForm() {
   const history = useHistory()
@@ -14,8 +14,10 @@ export default function LoginForm() {
 
   const onFinish = async (values) => {
     console.log('Received values of form: ', values)
-    const response = await axiosQ.post('http://localhost:3001/signup', values)
-    console.log(response)
+    const response = await axiosCors.post(
+      'http://localhost:3001/signup',
+      values
+    )
     if (response.status === 200) dispatch(userLoginAC(response.data))
     history.push('/')
   }

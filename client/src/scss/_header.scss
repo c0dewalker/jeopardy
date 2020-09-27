@@ -4,12 +4,12 @@
 }
 
 .nav {
-  width: 90%;
+  width: 80%;
+  height: 7vh;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
 }
 
 .nav__logo {
@@ -21,4 +21,14 @@
   font-size: 1.2rem;
   font-weight: 900;
   color: white;
+}
+
+.start-button {
+  padding: 0.6rem 1.2rem;
+  color: blue;
+  border-radius: 1.5em;
+  border: none;
+  font-family: inherit;
+  font-size: 1.5em;
+  background-color: #ffcc13;
 }

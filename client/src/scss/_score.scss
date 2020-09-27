@@ -4,7 +4,7 @@
 }
 
 .score__text {
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   color: $yellow;
 }
 
@@ -18,4 +18,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.score__live-icon {
+  height: 2.5rem;
 }

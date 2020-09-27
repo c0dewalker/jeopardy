@@ -1,21 +1,21 @@
-import React, { useEffect } from "react"
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { markGameAsFinishedAC } from '../store/actions'
+import { markGameAsFinishedAC } from '../../store/actions'
 import axios from 'axios'
 
-import Category from './Category'
-import ModalQuestion from './Modal_Question'
-import GameResults from './Game_Results'
+import Category from './Category/Category'
+import ModalQuestion from './ModalQuestion/ModalQuestion'
+import GameResults from './GameResults/GameResults'
 
-const axiosQ = axios.create({ withCredentials: true })
+const axiosCors = axios.create({ withCredentials: true })
 
 export default function Game() {
   const dispatch = useDispatch()
-  const state = useSelector(state => state)
+  const state = useSelector((state) => state)
   const { questions = [], score, lives, isFinished } = state
 
   async function saveFinishedGame(stateObject) {
-    await axiosQ.post('http://localhost:3001/save', stateObject)
+    await axiosCors.post('http://localhost:3001/save', stateObject)
   }
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function Game() {
   }, [isFinished, state])
 
   if (questions) {
-    const question = questions.find(question => question.visible === true)
+    const question = questions.find((question) => question.visible === true)
 
     questions.sort((a, b) => a.category - b.category)
     const cat1 = questions.slice(0, 5)
@@ -43,11 +43,9 @@ export default function Game() {
         <Category key={3} questions={cat3} />
         <Category key={4} questions={cat4} />
         <Category key={5} questions={cat5} />
-        {(isFinished) && <GameResults score={score} />}
+        {isFinished && <GameResults score={score} />}
         {question && <ModalQuestion question={question} />}
       </div>
     )
-  }
-  else return null
+  } else return null
 }
-

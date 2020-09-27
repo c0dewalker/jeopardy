@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { sendAnswerAC } from '../store/actions'
+import { sendAnswerAC } from '../../../store/actions'
 import ReactCountdownClock from 'react-countdown-clock'
-import Option from './Option'
+import Option from './Option/Option'
 
 export default function ModalQuestion({ question }) {
   const dispatch = useDispatch()
@@ -21,7 +21,11 @@ export default function ModalQuestion({ question }) {
         </span>
         <h1 className="timer-heading">{question.points} points question</h1>
         <p>{question.question}</p>
-        <ul>{question.answers.map((option, index) => <Option key={index} option={option} question={question} />)}</ul>
+        <ul>
+          {question.answers.map((option, index) => (
+            <Option key={index} option={option} question={question} />
+          ))}
+        </ul>
       </div>
     </div>
   )

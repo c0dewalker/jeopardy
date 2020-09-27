@@ -1,12 +1,12 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-
-import Desktop from './components/Desktop'
-import Login from './components/Login'
-import Signup from './components/Signup'
-import Home from './components/Home'
-import Profile from './components/Profile'
-import Header from './components/Header'
+import Header from './Header/Header'
+import Desktop from './Desktop/Desktop'
+import Home from './Home'
+import Login from './Login/Login'
+import Signup from './Signup/Signup'
+import Profile from './Profile/Profile'
+import PrivateRoute from './common/PrivateRoute'
 import 'antd/dist/antd.css'
 
 export default function App() {
@@ -19,8 +19,8 @@ export default function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/desktop" component={Desktop} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/home" component={Home} />
+          <PrivateRoute exact path="/profile" component={Profile} />
         </Switch>
       </div>
     </>

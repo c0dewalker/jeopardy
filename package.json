@@ -5,7 +5,7 @@
   "scripts": {
     "start": "nodemon ./bin/www",
     "client": "cd ./client && npm start",
-    "dev": "concurrently -n 'server,client' -c 'blue,green' \"nodemon ./bin/www\" \"npm run client\""
+    "dev": "concurrently -n 'server,client' -c 'blue,green' -k \"nodemon ./bin/www\" \"npm run client\""
   },
   "dependencies": {
     "axios": "^0.19.2",

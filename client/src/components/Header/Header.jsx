@@ -2,8 +2,8 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { Button } from 'antd'
-import { logoutAC } from '../store/actions'
-import Score from './Score'
+import { logoutAC } from '../../store/actions'
+import Score from './Score/Score'
 import axios from 'axios'
 import 'antd/dist/antd.css'
 
@@ -27,10 +27,8 @@ export default function Header() {
         'http://localhost:3001/save',
         fullState
       )
-      console.log(responseSave)
     }
     const responseLogout = await axiosCors.get('http://localhost:3001/logout')
-    console.log(responseLogout)
     dispatch(logoutAC())
   }
 
@@ -50,16 +48,16 @@ export default function Header() {
         <div className="nav__center-block">
           {showStartNew && (
             <NavLink to="/home">
-              <Button size="large" shape="round">
+              <button className="start-button">
                 <strong>Start new game!</strong>
-              </Button>
+              </button>
             </NavLink>
           )}
           {showContinueGame && (
             <NavLink to="/home">
-              <Button size="large" shape="round">
+              <button className="start-button">
                 <strong>Start new game!</strong>
-              </Button>
+              </button>
             </NavLink>
           )}
           {showScore && <Score />}

@@ -3,6 +3,9 @@ $yellow: #ffcc13;
 @import "header";
 @import "score";
 @import "login_signup";
+@import "profile";
+@import "desktop";
+@import "game";
 
 body {
   margin: 0;
@@ -15,56 +18,24 @@ body {
 
 html, body {
   height: 100%;
+  width: 100%;
 }
 
 .wrapper {
   height: 100vh;
 }
 
-.bg {
-  height: 500px;
-  /*background-image: url("https://i.pinimg.com/originals/69/f6/72/69f6721ad003efeccf715314fa5c8882.jpg");*/
-  background-image: url("https://cdn.vox-cdn.com/thumbor/f3y7gibQ8lkon_Y_Dt1u5Bz_LP4=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/11966773/jeopardy.jpg");
-  background-size: 500px;
-  background-repeat: no-repeat;
-  background-position: center 85px;
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
-}
-
-.category {
-  max-width: 100%;
-  min-height: 16%;
-  display: flex;
-}
-
-.question {
-  font-size: 2.2rem;
-  font-weight: 700;
-  min-width: 100%;
-  height: 85px;
-  width: 120px;
-  border: solid 1px black;
-}
-
-.question:hover {
-  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-}
-
-.game-container {
-  color: white;
-  font-size: 1.5rem;
-  width: 70%;
-  margin: 65px auto;
-  background-color: #108ff7;
-  text-align: center;
-}
-
-.border {
-  border: 1px solid white;
 }
 
 .modal-overlay {
@@ -76,7 +47,7 @@ html, body {
   right: 0;
 }
 
-.modal {
+.modal-old {
   position: absolute;
   color: black;
   top: 115px;
@@ -91,19 +62,7 @@ html, body {
   z-index: 1;
 }
 
-.modal-profile {
-  position: absolute;
-  color: black;
-  top: 180px;
-  left: 300px;
-  width: 700px;
-  min-height: 270px;
-  padding: 20px;
-  background-color: rgb(224, 228, 236);
-  box-shadow: 2px 2px 10px 1px black;
-  text-align: center;
-  z-index: 1;
-}
+
 .modal-button {
   margin: 5px 10px;
 }
@@ -119,14 +78,3 @@ html, body {
   display: inline-block;
 }
 
-.item,
-.category-name {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 60px;
-}
-
-.category-name {
-  font-weight: 700;
-}
