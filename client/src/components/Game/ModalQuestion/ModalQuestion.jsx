@@ -12,7 +12,7 @@ export default function ModalQuestion({ question }) {
       <div className="modal">
         <span className="timer">
           <ReactCountdownClock
-            seconds={20}
+            seconds={920}
             color="red"
             alpha={0.9}
             size={65}

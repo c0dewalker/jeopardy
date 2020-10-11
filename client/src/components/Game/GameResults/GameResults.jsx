@@ -34,22 +34,24 @@ export default function GameResults({ score }) {
         <h2>GAME OVER</h2>
         <h4>Your score is:</h4>
         <h2>{score}</h2>
-        <Button
-          type="primary"
-          size="large"
-          style={style}
-          onClick={startNewGameHandler}
-        >
-          Start new game
-        </Button>
-        <Button
-          type="primary"
-          size="large"
-          style={style}
-          onClick={cancelHandler}
-        >
-          Cancel
-        </Button>
+        <div game-results__buttons>
+          <Button
+            type="primary"
+            size="large"
+            style={style}
+            onClick={startNewGameHandler}
+          >
+            Start new game
+          </Button>
+          <Button
+            type="primary"
+            size="large"
+            style={style}
+            onClick={cancelHandler}
+          >
+            Cancel
+          </Button>
+        </div>
       </div>
     </div>
   )

@@ -30,9 +30,9 @@ export default function Profile() {
   }, [])
 
   return (
-    <div className="container">
-      <div className="profile">
-        <h1>{name}</h1>
+    <div className="profile__container">
+      <div className="profile__content">
+        <h1 className="profile__username">{name}</h1>
         <br />
         <h2>
           Games:<b>{stats.games}</b>

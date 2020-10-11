@@ -13,7 +13,7 @@ export default function Question(props) {
         if (!isAnswered) dispatch(startQuestionModalAC(_id))
       }}
     >
-      {!isAnswered && <span>{points}</span>}
+      {!isAnswered && <p className="question__points">{points}</p>}
     </div>
   )
 }

@@ -7,13 +7,11 @@ const Category = (props) => {
 
   return (
     <div className="category">
-      <div className="category-name">
-        <p>{title}</p>
+      <div className="category-name-container">
+        <p className="category-name">{title}</p>
       </div>
       {questions.map((question) => (
-        <div key={question._id} className="item">
-          <Question key={question._id} question={question} />
-        </div>
+        <Question key={question._id} question={question} />
       ))}
     </div>
   )

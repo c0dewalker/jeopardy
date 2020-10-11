@@ -1,11 +1,12 @@
-$yellow: #ffcc13;
-
+@import "variables";
+@import 'reset';
 @import "header";
 @import "score";
 @import "login_signup";
 @import "profile";
 @import "desktop";
 @import "game";
+@import "modals";
 
 body {
   margin: 0;
@@ -24,57 +25,3 @@ html, body {
 .wrapper {
   height: 100vh;
 }
-
-.container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-.modal-overlay {
-  background-color: rgba(0, 0, 0, 0.23);
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.modal-old {
-  position: absolute;
-  color: black;
-  top: 115px;
-  left: 300px;
-  width: 700px;
-  height: 370px;
-  position: absolute;
-  padding: 20px;
-  background-color: rgb(224, 228, 236);
-  box-shadow: 2px 2px 10px 1px black;
-  text-align: center;
-  z-index: 1;
-}
-
-
-.modal-button {
-  margin: 5px 10px;
-}
-
-.timer {
-  position: absolute;
-  left: 20px;
-  top: 20px;
-  display: inline-block;
-}
-
-.timer-heading {
-  display: inline-block;
-}
-
