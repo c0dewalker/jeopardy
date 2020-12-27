@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Button } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { setIsPlayingFalseAC } from '../../store/actions'
+import { gamePausedAC } from '../../store/game'
 import axios from 'axios'
 
 export default function Profile() {
@@ -11,7 +11,7 @@ export default function Profile() {
   const history = useHistory()
   const style = { margin: '15px' }
 
-  const name = useSelector((state) => state.name)
+  const { name, gameStatus } = useSelector((state) => state)
   const [stats, setStats] = useState({
     games: 0,
     highestScore: 0,
@@ -20,12 +20,13 @@ export default function Profile() {
 
   const fetchPlayerStats = async () => {
     const response = await axiosCors('http://localhost:3001/stats')
-    console.log(response)
     setStats(response.data)
   }
 
   useEffect(() => {
-    dispatch(setIsPlayingFalseAC())
+    if (gameStatus === 'started') {
+      dispatch(gamePausedAC())
+    }
     fetchPlayerStats()
   }, [])
 

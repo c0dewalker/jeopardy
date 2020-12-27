@@ -9,23 +9,23 @@ function randomNumber(num) {
 }
 
 const categories = {
-  '9': 'General Knowledge',
+  9: 'General Knowledge',
   // '10': 'Books',
-  '11': 'Film',
-  '12': 'Music',
+  11: 'Film',
+  12: 'Music',
   // '14': 'Television',
-  '15': 'Video Games',
+  15: 'Video Games',
   // '16': 'Board Games',
-  '17': 'Science & Nature',
-  '18': 'Computers',
-  '19': 'Mathematics',
-  '20': 'Mythology',
+  17: 'Science & Nature',
+  18: 'Computers',
+  19: 'Mathematics',
+  20: 'Mythology',
   // '21': 'Sports',
-  '22': 'Geography',
-  '23': 'History',
-  '24': 'Politics',
+  22: 'Geography',
+  23: 'History',
+  24: 'Politics',
   // '27': 'Animals',
-  '31': 'Anime & Manga'
+  31: 'Anime & Manga',
 }
 
 const categoriesKeys = Object.keys(categories)
@@ -37,10 +37,9 @@ router.get('/logout', function (req, res) {
 })
 
 router.get('/new', async function (req, res, next) {
-
   //проверка, есть ли незаконченная игра
   const user = await User.findById(req.user._id).populate('games')
-  const unfinishedGame = user.games.find(game => game.isFinished === false)
+  const unfinishedGame = user.games.find((game) => game.isFinished === false)
   if (unfinishedGame) {
     // res.set('isNew', 'false')
     // res.header("isNew", false)
@@ -68,19 +67,24 @@ router.get('/new', async function (req, res, next) {
 
   // find random questions for each category & difficulty level
   for (let i = 0; i <= 4; i++) {
-    const allQuestionsFromCategory = await Question.find({ category: newGameCategories[i] })
+    const allQuestionsFromCategory = await Question.find({
+      category: newGameCategories[i],
+    })
 
     for (let j = 0; j <= 4; j++) {
       const questionsByDifficulty = allQuestionsFromCategory.filter(
-        question => question.ourDifficulty === j)
-      const randomQuestionNumber = randomNumber(questionsByDifficulty.length - 1)
+        (question) => question.ourDifficulty === j
+      )
+      const randomQuestionNumber = randomNumber(
+        questionsByDifficulty.length - 1
+      )
       newGameQuestions.push(questionsByDifficulty[randomQuestionNumber])
     }
   }
 
   const newGame = new Game({
     userId: user._id,
-    questions: newGameQuestions
+    questions: newGameQuestions,
   })
   await newGame.save()
   user.games.push(newGame._id)
@@ -88,10 +92,9 @@ router.get('/new', async function (req, res, next) {
   res.json(newGame)
 })
 
+router.post('/save', async function (req, res) {
+  const { _id, userId, lives, isFinished, score, questions } = req.body
 
-router.post('/save', async function (req, res, next) {
-  const { _id, lives, isFinished, score, questions, userId } = req.body
-  console.log(req.body)
   const game = await Game.findOne({ _id })
   game.isFinished = isFinished
   game.score = score
@@ -102,10 +105,12 @@ router.post('/save', async function (req, res, next) {
   if (isFinished) {
     const user = await User.findOne({ _id: userId })
     if (score > user.highestScore) user.highestScore = score
-    user.averageScore = user.averageScore + (score - user.averageScore) * (1 / (1 + user.games.length))
+    user.averageScore =
+      user.averageScore +
+      (score - user.averageScore) * (1 / (1 + user.games.length))
     user.save()
   }
-  res.json('message: game saved succesefully')
+  res.json('message: game saved successfully')
 })
 
 router.get('/stats', async (req, res) => {
@@ -113,7 +118,7 @@ router.get('/stats', async (req, res) => {
   res.json({
     games: user.games.length,
     highestScore: user.highestScore,
-    averageScore: user.averageScore
+    averageScore: user.averageScore,
   })
 })
 

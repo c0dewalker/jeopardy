@@ -1,27 +1,279 @@
-@import "variables";
-@import 'reset';
-@import "header";
-@import "score";
-@import "login_signup";
-@import "profile";
-@import "desktop";
-@import "game";
-@import "modals";
+$yellow: #ffcc13;
+
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap');
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Londrina Solid', sans-serif;
 }
-
-html, body {
+* {
+  boxing-size: border-box;
+}
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
 }
 
+body {
+  padding: 0;
+  margin: 0;
+}
+
 .wrapper {
-  height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex-grow: 1;
+}
+
+.header {
+  width: 100%;
+  background-color: blue;
+}
+
+.nav > .container {
+  width: 90%;
+  max-width: 1400px;
+  padding: 0.5em;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.8em;
+  font-weight: 700;
+}
+
+.nav__logo {
+  height: 45px;
+}
+
+.nav__item {
+  color: white;
+}
+
+.nav__right-block .nav__item:first-child {
+  margin-right: 1em;
+}
+
+
+.start-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.2em;
+  line-height: 1.2em;
+
+  padding: 0.2em 0.6em;
+  margin: 0;
+
+  color: blue;
+  background-color: #ffcc13;
+
+  border: none;
+  border-radius: 100000px;
+}
+
+.start-button:hover {
+  box-shadow: 0 0 15px 2px #ffcc13;
+  transition-duration: 0.2s;
+}
+
+.background-image {
+  height: 100%;
+  background: url('https://dfw.cbslocal.com/wp-content/uploads/sites/15909545/2014/03/jeopardy_98521822.jpg')
+  center center / cover no-repeat;
+}
+
+.desktop-background {
+  /*background-image: url("https://i.pinimg.com/originals/69/f6/72/69f6721ad003efeccf715314fa5c8882.jpg");*/
+  height: 100%;
+  background-image: url("https://cdn.vox-cdn.com/thumbor/f3y7gibQ8lkon_Y_Dt1u5Bz_LP4=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/11966773/jeopardy.jpg");
+  background-size: 40vw;
+  background-repeat: no-repeat;
+  background-position: center 15vh;
+}
+
+
+.modal-background {
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.login-form {
+  width: 300px;
+  padding: 35px 30px 20px 30px;
+  border: 1px solid black;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: 'Londrina Solid', sans-serif;
+  background-color: white;
+}
+
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  width: 60%;
+  transform: translateY(13vh);
+  margin: 0 auto;
+  background-color: #108ff7;
+  color: white;
+  font-size: 3.1vh;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: center;
+}
+
+.category {
+  height: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+
+.category-name-container {
+  min-width: 25%;
+  display: table;
+}
+
+.question {
+  display: table;
+  height: 100%;
+  min-width: 15%;
+  border-left: 1px solid white;
+
+  &:hover {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+  }
+}
+
+.category-name, .question__points {
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+}
+
+.timer {
+  position: absolute;
+  left: 4vh;
+  top: 4vh;
+  display: inline-block;
+}
+
+.timer-heading {
+  display: inline-block;
+}
+
+
+.score {
+  color: aliceblue;
+  text-align: center;
+}
+
+.score__text {
+  font-size: 2.5rem;
+  color: $yellow;
+}
+
+.score__number {
+  font-size: 2.5rem;
+  color: $yellow;
+}
+
+.score-block {
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.score__live-icon {
+  height: 2.5rem;
+}
+
+
+.profile__container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__content {
+  color: black;
+  width: 50%;
+  margin: 0 auto;
+  transform: translateY(-80px);
+  min-height: 40vh;
+  padding: 20px;
+  background-color: rgb(224, 228, 236);
+  box-shadow: 2px 2px 10px 1px black;
+  text-align: center;
+  z-index: 1;
+  font-size: 2.7vh;
+}
+
+
+
+
+.modal-overlay {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.modal {
+  position: absolute;
+  min-height: 40vh;
+  min-width: 50%;
+  max-width: 75%;
+  transform: translateY(-7.5%);
+  padding: 4vh;
+  color: black;
+  background-color: rgb(224, 228, 236);
+  box-shadow: 2px 2px 10px 1px black;
+  text-align: center;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.modal-button {
+  margin: 1vh 2vh;
+  padding: 0.5vh 2vh;
+  border: 1px solid black;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
 }

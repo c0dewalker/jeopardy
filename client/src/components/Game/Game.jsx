@@ -1,32 +1,41 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { markGameAsFinishedAC } from '../../store/actions'
-import axios from 'axios'
+import { fetchGameDataThunk, gameFinishedAC } from '../../store/game'
 
 import Category from './Category/Category'
 import ModalQuestion from './ModalQuestion/ModalQuestion'
 import GameResults from './GameResults/GameResults'
+
+import axios from 'axios'
 
 const axiosCors = axios.create({ withCredentials: true })
 
 export default function Game() {
   const dispatch = useDispatch()
   const state = useSelector((state) => state)
-  const { questions = [], score, lives, isFinished } = state
+
+  const { gameStatus, questions = [], score, lives } = useSelector(
+    (state) => state
+  )
+  const isFinished = gameStatus === 'finished'
 
   async function saveFinishedGame(stateObject) {
     await axiosCors.post('http://localhost:3001/save', stateObject)
   }
+  useEffect(() => {
+    if (gameStatus === 'notReady') dispatch(fetchGameDataThunk())
+    if (gameStatus === 'finished') saveFinishedGame(state)
+  }, [gameStatus, state])
 
   useEffect(() => {
-    if (lives === 0) dispatch(markGameAsFinishedAC())
+    if (lives === 0) dispatch(gameFinishedAC())
   }, [lives])
 
-  useEffect(() => {
-    if (isFinished) saveFinishedGame(state)
-  }, [isFinished, state])
+  //  useEffect(() => {
+  //    if (isFinished) saveFinishedGame(state)
+  //  }, [isFinished, state])
 
-  if (questions) {
+  if (questions.length) {
     const question = questions.find((question) => question.visible === true)
 
     questions.sort((a, b) => a.category - b.category)
@@ -47,5 +56,7 @@ export default function Game() {
         {question && <ModalQuestion question={question} />}
       </div>
     )
-  } else return null
+  }
+
+  return null
 }

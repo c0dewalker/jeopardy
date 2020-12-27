@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { userLoginAC } from '../../store/actions'
+import { loginThunk, signUpThunk } from '../../store/game'
 import { Form, Input, Button } from 'antd'
 import { UserOutlined, MailOutlined, LockOutlined } from '@ant-design/icons'
 import axios from 'axios'
@@ -12,21 +12,19 @@ export default function LoginForm() {
   const history = useHistory()
   const dispatch = useDispatch()
 
-  const onFinish = async (values) => {
-    console.log('Received values of form: ', values)
-    const response = await axiosCors.post(
-      'http://localhost:3001/signup',
-      values
-    )
-    if (response.status === 200) dispatch(userLoginAC(response.data))
-    history.push('/')
-  }
-
   return (
     <div className="background-image">
       <div className="modal-background">
         <div className="login-form">
-          <Form onFinish={onFinish}>
+          <Form
+            onFinish={(values) =>
+              dispatch(
+                signUpThunk(values, () => {
+                  history.push('/')
+                })
+              )
+            }
+          >
             <Form.Item>
               <h1>Sign Up</h1>
             </Form.Item>
