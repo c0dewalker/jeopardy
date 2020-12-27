@@ -1,23 +1,13 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-import { userLoginAC } from '../../store/actions'
+import { loginThunk } from '../../store/game'
 import { Form, Input, Button } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import axios from 'axios'
-
-const axiosCors = axios.create({ withCredentials: true })
 
 export default function LoginForm() {
   const dispatch = useDispatch()
   const history = useHistory()
-  const onFinish = async (values) => {
-    const response = await axiosCors.post('http://localhost:3001/login', values)
-    if (response.status === 200) {
-      dispatch(userLoginAC(response.data))
-      history.push('/')
-    }
-  }
 
   return (
     <div className="background-image">
@@ -26,7 +16,13 @@ export default function LoginForm() {
           <Form
             name="normal_login"
             initialValues={{ remember: true }}
-            onFinish={onFinish}
+            onFinish={(values) =>
+              dispatch(
+                loginThunk(values, () => {
+                  history.push('/')
+                })
+              )
+            }
           >
             <Form.Item>
               <h1>Login</h1>

@@ -1,7 +1,11 @@
-import { createStore } from 'redux'
-import reducer from './reducers'
+import { createStore, applyMiddleware } from 'redux'
+import reducer from './game'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
-const composeEnhancers = composeWithDevTools()
+const composeEnhancers = composeWithDevTools(applyMiddleware(logger, thunk))
 
-export default createStore(reducer, composeEnhancers)
+const store = createStore(reducer, composeEnhancers)
+
+export default store

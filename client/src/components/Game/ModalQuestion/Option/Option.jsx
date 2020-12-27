@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { sendAnswerAC } from '../../../../store/actions'
+import { sendAnswerAC } from '../../../../store/game'
 
 const Option = ({ option, question }) => {
   const dispatch = useDispatch()

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { startQuestionModalAC } from '../../../../store/actions'
+import { startQuestionModalAC } from '../../../../store/game'
 
 export default function Question(props) {
   const { _id, points, isAnswered } = props.question
